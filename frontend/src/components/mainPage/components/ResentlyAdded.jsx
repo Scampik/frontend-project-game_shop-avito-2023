@@ -1,3 +1,5 @@
+import thumbnail from '../../../assets/register.jpg';
+
 const ResentlyAdded = () => (
   <div className="row mb-4">
     <div className="col-md-8">
@@ -11,7 +13,7 @@ const ResentlyAdded = () => (
             <div className="col-3 align-self-center mt-n2">
               <div className="card">
                 <div className="image-wrapper">
-                  <img className="card-img-top" src="/g/564/thumbnail.jpg" alt="Synced" />
+                  <img className="card-img-top" src={thumbnail} alt="Synced" />
                   <div className="loader-wrapper">
                     <div className="spinner-grow ftg-blue" role="status">
                       <span className="sr-only">Loading...</span>

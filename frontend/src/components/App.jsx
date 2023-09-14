@@ -19,7 +19,7 @@ import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
 import routes from '../routes.js';
 import { useAuth } from '../context/AuthContext.jsx';
-import loginImage from '../assets/login.webp';
+import loginImage from '../assets/register.jpg';
 
 const AuthButton = () => {
   // const { t } = useTranslation();

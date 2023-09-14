@@ -1,3 +1,5 @@
+import { Controller } from 'react-bootstrap-icons';
+
 const PageFooter = () => (
   <footer className="page-footer font-small deep-dark pt-3">
     <div className="container text-center text-md-left">
@@ -54,7 +56,7 @@ const PageFooter = () => (
           </p>
         </div>
         <div className="col-md-2 col-lg-3 col-xl-3 mx-auto mt-3">
-          <img src="/assets/images/logo-footer.png" alt="FreeToGame" />
+          <Controller size={80} alt="FreeToGame" />
         </div>
       </div>
       <hr />

@@ -29,7 +29,7 @@ const gamesSlice = createSlice({
 });
 
 export default gamesSlice.reducer;
-export const selectors = gamesAdapter.getSelectors((state) => state.channels);
+export const selectors = gamesAdapter.getSelectors((state) => state.games);
 export const currenIdGame = (state) => state.games.currentGamelId;
 export const gameIdSelector = createSelector(
   currenIdGame,
@@ -44,6 +44,25 @@ export const gameNameSelector = createSelector(
       return game.name;
     }
     return null;
+  },
+);
+export const personGamesSelector = createSelector(
+  selectors.selectAll,
+  (games) => {
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    const totalNumGames = games.length;
+    const result = [];
+
+    // eslint-disable-next-line functional/no-loop-statements
+    for (let i = 0; i < 3; i += 1) {
+      const randomIndex = getRandomInt(totalNumGames);
+      result.push(games[randomIndex]);
+    }
+
+    return result;
   },
 );
 export const { actions } = gamesSlice;
