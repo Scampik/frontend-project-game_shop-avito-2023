@@ -5,6 +5,10 @@ import {
   createEntityAdapter,
 } from '@reduxjs/toolkit';
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 const gamesAdapter = createEntityAdapter();
 
 const gamesSlice = createSlice({
@@ -46,18 +50,43 @@ export const gameNameSelector = createSelector(
     return null;
   },
 );
+export const mostPlayedGamesSelector = createSelector(
+  selectors.selectAll,
+  (games) => {
+    const totalNumGames = games.length;
+    const result = [];
+    // eslint-disable-next-line functional/no-loop-statements
+    for (let i = 0; i < 4; i += 1) {
+      const randomIndex = getRandomInt(totalNumGames);
+      result.push(games[randomIndex]);
+    }
+
+    return result;
+  },
+);
+
 export const personGamesSelector = createSelector(
   selectors.selectAll,
   (games) => {
-    function getRandomInt(max) {
-      return Math.floor(Math.random() * max);
-    }
-
     const totalNumGames = games.length;
     const result = [];
-
     // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < 3; i += 1) {
+      const randomIndex = getRandomInt(totalNumGames);
+      result.push(games[randomIndex]);
+    }
+
+    return result;
+  },
+);
+
+export const resentlyGamesSelector = createSelector(
+  selectors.selectAll,
+  (games) => {
+    const totalNumGames = games.length;
+    const result = [];
+    // eslint-disable-next-line functional/no-loop-statements
+    for (let i = 0; i < 6; i += 1) {
       const randomIndex = getRandomInt(totalNumGames);
       result.push(games[randomIndex]);
     }

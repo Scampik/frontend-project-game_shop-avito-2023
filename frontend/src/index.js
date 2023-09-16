@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import init from './init';
 
 const app = async () => {
-  const root = ReactDOM.createRoot(document.getElementById('chat'));
+  const root = ReactDOM.createRoot(document.getElementById('shop'));
   root.render(await init());
 };
 

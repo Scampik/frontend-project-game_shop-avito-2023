@@ -10,7 +10,7 @@ const PersonalRecommendation = () => {
   // const dispatch = useDispatch();
   // const { t } = useTranslation();
   const personGamesData = useSelector(personGamesSelector);
-  console.log(personGamesData);
+  // console.log(personGamesData);s
 
   return (
     <div className="row mb-4">

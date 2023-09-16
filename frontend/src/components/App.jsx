@@ -82,14 +82,14 @@ const App = () => {
           </Container>
           <ThemeButton />
         </Navbar>
-        <Routes>
-          <Route path={routes.loginPage()} element={<LoginPage />} />
-          <Route path={routes.mainPage()} element={<MainPage />} />
-          <Route path={routes.notFoundPage()} element={<PageNotFound />} />
-        </Routes>
-        <div className="d-flex flex-column h-100 bg-body">
-          <PageFooter />
-        </div>
+        <main className="bg-body-secondary">
+          <Routes>
+            <Route path={routes.loginPage()} element={<LoginPage />} />
+            <Route path={routes.mainPage()} element={<MainPage />} />
+            <Route path={routes.notFoundPage()} element={<PageNotFound />} />
+          </Routes>
+        </main>
+        <PageFooter />
       </div>
       <ToastContainer />
     </Router>

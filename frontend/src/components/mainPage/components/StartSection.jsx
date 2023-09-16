@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import routes from '../../../routes';
 
 const StartSection = () => (
-  <section className="text-center d-flex align-items-center bg-body-secondary h-25">
+  <section className="text-center d-flex align-items-center bg-body h-25">
     <div className="container mb-n2 ">
       <h1 className="jumbotron-heading fs-1">
         Discover the best
