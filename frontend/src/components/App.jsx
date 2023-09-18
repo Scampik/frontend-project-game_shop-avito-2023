@@ -6,9 +6,11 @@ import {
   Link,
   // Navigate,
   // Outlet,
-  useLocation,
+  // useLocation,
 } from 'react-router-dom';
-import { Button, Navbar, Container } from 'react-bootstrap';
+import {
+  Button, Navbar, Container, NavDropdown, Nav,
+} from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { MoonStars, SunFill } from 'react-bootstrap-icons';
@@ -19,17 +21,29 @@ import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
 import routes from '../routes.js';
 import { useAuth } from '../context/AuthContext.jsx';
-import loginImage from '../assets/register.jpg';
+import loginImage from '../assets/logo.jpg';
 
 const AuthButton = () => {
   // const { t } = useTranslation();
   const auth = useAuth();
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     auth.user
       ? <Button onClick={auth.logOut}>Log out</Button>
-      : <Button as={Link} to="/login" state={{ from: location }}>Log in</Button>
+      : <Link as={Link} to="/login" className="text-decoration-none align-self-center m-2 text-muted">Log in</Link>
+  );
+};
+
+const SignUpButton = () => {
+  // const { t } = useTranslation();
+  const auth = useAuth();
+  // const location = useLocation();
+
+  return (
+    auth.user
+      ? <Button onClick={auth.logOut}>Log out</Button>
+      : <Button as={Link} to="/login" className="text-decoration-none">Join Free</Button>
   );
 };
 
@@ -48,12 +62,12 @@ const ThemeButton = () => {
       { theme === 'light'
         ? (
           <SunFill
-            size={20}
+            size={18}
             onClick={handleTheme}
           />
         ) : (
           <MoonStars
-            size={20}
+            size={18}
             onClick={handleTheme}
           />
         )}
@@ -66,21 +80,56 @@ const App = () => {
   return (
     <Router>
       <div className="d-flex flex-column h-100 bg-body">
-        <Navbar className="shadow-sm bg-body-tertiary justify-content-between" expand="lg">
-          <Container className="pe-0 me-0">
+        <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+          <Container>
             <Navbar.Brand as={Link} to={routes.mainPage()} className="fs-4 fw-semibold mr-auto">
-              {t('siteName')}
               <img
                 src={loginImage}
-                height={20}
-                width={20}
+                height={30}
+                width={30}
                 className="rounded-circle"
                 alt={t('enter')}
               />
+              {t('siteName')}
             </Navbar.Brand>
-            <AuthButton />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="#features">Features</Nav.Link>
+                <NavDropdown title="Free Games" id="collapsible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">MMORPG</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Shooter
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">MOBA</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Free-To-Play-Games
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown title="Browser Games" id="collapsible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Browser MMORPG</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Browser Shooter
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">Browser MOBA</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Browser-Games
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link href="#features">Top-2023</Nav.Link>
+              </Nav>
+              <Nav>
+                <ThemeButton />
+                <Nav.Link href="#memes">
+                  Inventory
+                </Nav.Link>
+                <AuthButton />
+                <SignUpButton />
+              </Nav>
+            </Navbar.Collapse>
           </Container>
-          <ThemeButton />
         </Navbar>
         <main className="bg-body">
           <Routes>

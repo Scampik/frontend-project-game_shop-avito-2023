@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   translation: {
-    siteName: 'Free-To-Plays-Games',
+    siteName: 'FTP-Games',
     loginPage: {
       enter: 'Войти',
       regLink: 'Регистрация',
@@ -28,14 +28,9 @@ export default {
       notoneof: 'Должно быть уникальным',
     },
     toast: {
-      createChannel: 'Канал создан',
-      renameChannel: 'Канал переименован',
-      removeChannel: 'Канал удалён',
       networkProblem: 'Ошибка соединения',
       duplicateUser: 'Такой пользователь уже существует',
     },
-    addChannel: 'Добавить канал',
-    channels: 'Каналы',
     cancel: 'Отменить',
     confirm: 'Уверены?',
     delete: 'Удалить',
@@ -45,9 +40,6 @@ export default {
     inviteLogin: 'Уже есть аккаунт?',
     login: 'Авторизация',
     noPageSelected: 'No page is selected.',
-    menu: 'Управление каналом',
-    nameChannel: 'Имя канала',
-    renameChannel: 'Переименовать канал',
     password: 'Пароль',
     passwordConfirm: 'Подтвердите пароль',
     send: 'Отправить',
@@ -62,14 +54,6 @@ export default {
       msg1: 'Страница не найдена',
       msg2: 'Но вы можете перейти',
       msg3: 'на главную страницу',
-    },
-
-    messages: {
-      counter: {
-        count_one: '{{count}} сообщение',
-        count_few: '{{count}} сообщения',
-        count_many: '{{count}} сообщений',
-      },
     },
   },
 };

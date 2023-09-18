@@ -1,3 +1,4 @@
+/* eslint-disable functional/no-loop-statements */
 /* eslint-disable no-param-reassign */
 import { createSelector } from 'reselect';
 import {
@@ -55,7 +56,6 @@ export const mostPlayedGamesSelector = createSelector(
   (games) => {
     const totalNumGames = games.length;
     const result = [];
-    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < 4; i += 1) {
       const randomIndex = getRandomInt(totalNumGames);
       result.push(games[randomIndex]);
@@ -70,7 +70,6 @@ export const personGamesSelector = createSelector(
   (games) => {
     const totalNumGames = games.length;
     const result = [];
-    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < 3; i += 1) {
       const randomIndex = getRandomInt(totalNumGames);
       result.push(games[randomIndex]);
@@ -85,7 +84,6 @@ export const resentlyGamesSelector = createSelector(
   (games) => {
     const totalNumGames = games.length;
     const result = [];
-    // eslint-disable-next-line functional/no-loop-statements
     for (let i = 0; i < 7; i += 1) {
       const randomIndex = getRandomInt(totalNumGames);
       result.push(games[randomIndex]);
