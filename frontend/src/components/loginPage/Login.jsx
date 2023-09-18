@@ -31,7 +31,7 @@ const LoginPage = () => {
       try {
         const response = await axios.post(routes.loginPath(), values);
         auth.logIn(response.data);
-        navigate('/');
+        navigate(routes.mainPage());
       } catch (err) {
         formik.setSubmitting(false);
         console.log(err);
@@ -116,7 +116,7 @@ const LoginPage = () => {
                   {t('loginPage.invite')}
                   {' '}
                 </span>
-                <Link to={routes.signupPage()}>{t('loginPage.regLink')}</Link>
+                <Link to={routes.signUpPage()}>{t('loginPage.regLink')}</Link>
               </div>
             </div>
           </div>

@@ -17,6 +17,7 @@ import { MoonStars, SunFill } from 'react-bootstrap-icons';
 
 import PageFooter from './mainPage/components/PageFooter.jsx';
 import LoginPage from './loginPage/Login';
+import SignUpPage from './signUpPage/signUp';
 import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
 import routes from '../routes.js';
@@ -31,19 +32,26 @@ const AuthButton = () => {
   return (
     auth.user
       ? <Button onClick={auth.logOut}>Log out</Button>
-      : <Link as={Link} to="/login" className="text-decoration-none align-self-center m-2 text-muted">Log in</Link>
+      : <Nav.Link href={routes.loginPage()}>Log in</Nav.Link>
   );
 };
 
 const SignUpButton = () => {
-  // const { t } = useTranslation();
   const auth = useAuth();
-  // const location = useLocation();
-
   return (
     auth.user
-      ? <Button onClick={auth.logOut}>Log out</Button>
-      : <Button as={Link} to="/login" className="text-decoration-none">Join Free</Button>
+      ? <></>
+      : <Button as={Link} to={routes.signUpPage()} className="text-decoration-none">Join Free</Button>
+  );
+};
+
+const Inventory = () => {
+  const auth = useAuth();
+  console.log(auth.user);
+  return (
+    auth.user
+      ? <Nav.Link href={routes.loginPage()}>Inventory</Nav.Link>
+      : <></>
   );
 };
 
@@ -122,9 +130,7 @@ const App = () => {
               </Nav>
               <Nav>
                 <ThemeButton />
-                <Nav.Link href="#memes">
-                  Inventory
-                </Nav.Link>
+                <Inventory />
                 <AuthButton />
                 <SignUpButton />
               </Nav>
@@ -136,6 +142,7 @@ const App = () => {
             <Route path={routes.loginPage()} element={<LoginPage />} />
             <Route path={routes.mainPage()} element={<MainPage />} />
             <Route path={routes.notFoundPage()} element={<PageNotFound />} />
+            <Route path={routes.signUpPage()} element={<SignUpPage />} />
           </Routes>
         </main>
         <PageFooter />

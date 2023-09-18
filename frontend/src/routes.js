@@ -5,7 +5,7 @@ const routes = {
   dataPath: () => [apiPath, 'data'].join('/'),
   signupPath: () => [apiPath, 'signup'].join('/'),
   loginPage: () => '/login',
-  signupPage: () => '/signup',
+  signUpPage: () => '/signup',
   notFoundPage: () => '*',
   mainPage: () => '/',
 };

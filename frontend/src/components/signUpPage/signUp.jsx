@@ -10,7 +10,7 @@ import axios from 'axios';
 import routes from '../../routes.js';
 import { useAuth } from '../../context/AuthContext.jsx';
 
-import registration from '../../assets/register.jpg';
+import registration from '../../assets/logo.jpg';
 
 const SignUpPage = () => {
   const auth = useAuth();
@@ -55,7 +55,7 @@ const SignUpPage = () => {
           password: values.password,
         });
         auth.logIn(response.data);
-        navigate(routes.loginPage());
+        navigate('/');
       } catch (err) {
         formik.setSubmitting(false);
         console.log(err);
@@ -74,7 +74,7 @@ const SignUpPage = () => {
   });
 
   return (
-    <div className="container-fluid h-100">
+    <div className="container-fluid h-100 p-lg-5">
       <div className="row justify-content-center align-content-center h-100">
         <div className="col-12 col-md-8 col-xxl-6">
           <div className="card shadow-sm">
@@ -180,7 +180,7 @@ const SignUpPage = () => {
                   {t('inviteLogin')}
                   {' '}
                 </span>
-                <Link to={routes.chatPage()}>{t('login')}</Link>
+                <Link to={routes.mainPage()}>{t('login')}</Link>
               </div>
             </div>
           </div>
