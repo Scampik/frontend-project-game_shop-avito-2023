@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import Badge from 'react-bootstrap/Badge';
 
 import {
   // actions as channelsActions,
@@ -16,7 +17,7 @@ const PersonalRecommendation = () => {
     <div className="row mb-4">
       {personGamesData.map((game) => (
         <div key={game.id} className="game-card video-card col-md-4" data-video-src="/g/2/videoplayback.webm">
-          <div className="card mb-4 grow shadow">
+          <div className="card mb-4 grow shadow bg-body-secondary">
             <div className="image-wrapper">
               <img
                 style={{
@@ -32,14 +33,15 @@ const PersonalRecommendation = () => {
               />
 
             </div>
-            <div className="card-body">
+            <div className="card-body d-flex justify-content-between align-items-center">
               <a
                 href={game.freetogame_profile_url}
-                className="d-flex"
+                className="text-decoration-none text-muted stretched-link text-truncate"
               >
-                <h4 className="fs-5 p-2 w-100 card-title text-truncate">{game.title}</h4>
-                <span className="btn btn-primary p-2 flex-shrink-1 py-2 px-2 float-right d-flex">FREE</span>
+                <h4 className="fs-5 p-2 text-truncate">{game.title}</h4>
+                {}
               </a>
+              <Badge className="py-2 px-2 float-right ms-auto">FREE</Badge>
               <div className="d-flex justify-content-between align-items-center" />
             </div>
           </div>

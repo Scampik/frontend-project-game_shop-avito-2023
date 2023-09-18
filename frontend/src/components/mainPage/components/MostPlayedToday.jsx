@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import Badge from 'react-bootstrap/Badge';
+
 // import thumbnail from '../../../assets/register.jpg';
 import {
   // actions as channelsActions,
@@ -10,7 +12,7 @@ const MostPlayedToday = () => {
   // const dispatch = useDispatch();
   // const { t } = useTranslation();
   const mostPlayedGamesData = useSelector(mostPlayedGamesSelector);
-  console.log(mostPlayedGamesData);
+  // console.log(mostPlayedGamesData);
 
   return (
     <div className="col-md-4">
@@ -20,6 +22,11 @@ const MostPlayedToday = () => {
           <div className="card mb-4 grow shadow">
             <div className="image-wrapper">
               <img
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: 'attr(width) / attr(height)',
+                }}
                 className="card-widget-top"
                 width="356"
                 height="201"
@@ -27,16 +34,16 @@ const MostPlayedToday = () => {
                 alt="Naruto Online"
               />
             </div>
-            <span
+            <Badge
               style={{
                 position: 'absolute',
                 bottom: '8px',
                 right: '16px',
               }}
-              className="shadow btn btn-primary py-2 px-2 float-right"
+              className="shadow py-2 px-2 float-right"
             >
               FREE
-            </span>
+            </Badge>
             <a
               href={game.freetogame_profile_url}
               className="stretched-link no-underline"

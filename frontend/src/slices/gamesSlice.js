@@ -86,7 +86,7 @@ export const resentlyGamesSelector = createSelector(
     const totalNumGames = games.length;
     const result = [];
     // eslint-disable-next-line functional/no-loop-statements
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 7; i += 1) {
       const randomIndex = getRandomInt(totalNumGames);
       result.push(games[randomIndex]);
     }

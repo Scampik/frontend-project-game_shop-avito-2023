@@ -1,18 +1,18 @@
 import { Controller } from 'react-bootstrap-icons';
 
 const PageFooter = () => (
-  <footer className="page-footer font-small deep-dark pt-3">
+  <footer className="page-footer font-small deep-dark pt-3 bg-dark-subtle">
     <div className="container text-center text-md-left">
       <div className="row text-center text-md-left mt-3 pb-3">
         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
           <p>
-            <a href="/about">About Us</a>
+            <a href="/about" className="text-decoration-none">About Us</a>
           </p>
           <p>
-            <a href="/api-doc">API</a>
+            <a href="/api-doc" className="text-decoration-none">API</a>
           </p>
           <p>
-            <a href="/contact">Contact Us</a>
+            <a href="/contact" className="text-decoration-none">Contact Us</a>
             {' '}
 
           </p>
@@ -23,17 +23,17 @@ const PageFooter = () => (
         <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
           <p>
             {' '}
-            <a href="/faq">Help/FAQ</a>
+            <a href="/faq" className="text-decoration-none">Help/FAQ</a>
             {' '}
           </p>
           <p>
             {' '}
-            <a href="/support">Support &amp; Bugs</a>
+            <a href="/support" className="text-decoration-none">Support &amp; Bugs</a>
             {' '}
           </p>
           <p>
             {' '}
-            <a href="/map">Sitemap</a>
+            <a href="/map" className="text-decoration-none">Sitemap</a>
             {' '}
           </p>
         </div>
@@ -41,17 +41,17 @@ const PageFooter = () => (
         <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
           <p>
             {' '}
-            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/privacy-policy" className="text-decoration-none">Privacy Policy</a>
             {' '}
           </p>
           <p>
             {' '}
-            <a href="/cookies-policy">Cookies Policy</a>
+            <a href="/cookies-policy" className="text-decoration-none">Cookies Policy</a>
             {' '}
           </p>
           <p>
             {' '}
-            <a href="/terms-of-use">Terms of Use</a>
+            <a href="/terms-of-use" className="text-decoration-none">Terms of Use</a>
             {' '}
           </p>
         </div>

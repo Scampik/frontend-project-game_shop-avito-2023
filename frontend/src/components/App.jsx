@@ -82,7 +82,7 @@ const App = () => {
           </Container>
           <ThemeButton />
         </Navbar>
-        <main className="bg-body-secondary">
+        <main className="bg-body">
           <Routes>
             <Route path={routes.loginPage()} element={<LoginPage />} />
             <Route path={routes.mainPage()} element={<MainPage />} />
