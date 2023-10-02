@@ -4,9 +4,9 @@ import {
   Routes,
   Route,
   Link,
-  // Navigate,
+  Navigate,
   // Outlet,
-  // useLocation,
+  useLocation,
 } from 'react-router-dom';
 import {
   Button, Navbar, Container, NavDropdown, Nav,
@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { MoonStars, SunFill } from 'react-bootstrap-icons';
 
 import PageFooter from './mainPage/components/PageFooter.jsx';
+import PrivatePage from './privatePage/PrivatePage.jsx';
 import LoginPage from './loginPage/Login';
 import SignUpPage from './signUpPage/signUp';
 import MainPage from './mainPage/MainPage';
@@ -47,11 +48,19 @@ const SignUpButton = () => {
 
 const Inventory = () => {
   const auth = useAuth();
-  console.log(auth.user);
   return (
     auth.user
-      ? <Nav.Link href={routes.loginPage()}>Inventory</Nav.Link>
+      ? <Nav.Link href={routes.privatePage()}>Inventory</Nav.Link>
       : <></>
+  );
+};
+
+const PrivateRoute = ({ children }) => {
+  const auth = useAuth();
+  const location = useLocation();
+
+  return (
+    auth.user ? children : <Navigate to="/login" state={{ from: location }} />
   );
 };
 
@@ -143,6 +152,14 @@ const App = () => {
             <Route path={routes.mainPage()} element={<MainPage />} />
             <Route path={routes.notFoundPage()} element={<PageNotFound />} />
             <Route path={routes.signUpPage()} element={<SignUpPage />} />
+            <Route
+              path={routes.privatePage()}
+              element={(
+                <PrivateRoute>
+                  <PrivatePage />
+                </PrivateRoute>
+            )}
+            />
           </Routes>
         </main>
         <PageFooter />

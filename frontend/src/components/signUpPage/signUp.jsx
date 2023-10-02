@@ -180,7 +180,7 @@ const SignUpPage = () => {
                   {t('inviteLogin')}
                   {' '}
                 </span>
-                <Link to={routes.mainPage()}>{t('login')}</Link>
+                <Link to={routes.loginPage()}>{t('login')}</Link>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 import { useAuth } from '../../context/AuthContext.jsx';
 import routes from '../../routes.js';
-import loginImage from '../../assets/register.jpg';
+import loginImage from '../../assets/logo.jpg';
 
 const LoginPage = () => {
   const auth = useAuth();
@@ -47,7 +47,7 @@ const LoginPage = () => {
   });
 
   return (
-    <div className="container-fluid h-100">
+    <div className="container-fluid h-100 p-lg-5">
       <div className="row justify-content-center align-content-center h-100">
         <div className="col-12 col-md-8 col-xxl-6">
           <div className="card shadow-sm">
