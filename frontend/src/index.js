@@ -3,11 +3,11 @@ import 'bootstrap';
 
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import init from './init';
+import vdom from './init';
 
 const app = async () => {
   const root = ReactDOM.createRoot(document.getElementById('shop'));
-  root.render(await init());
+  root.render(await vdom());
 };
 
 app();
