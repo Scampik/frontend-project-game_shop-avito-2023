@@ -27,10 +27,7 @@ export default {
       max: 'От 3 до 20 символов',
       notoneof: 'Должно быть уникальным',
     },
-    toast: {
-      networkProblem: 'Ошибка соединения',
-      duplicateUser: 'Такой пользователь уже существует',
-    },
+    language: 'Русский',
     cancel: 'Отменить',
     confirm: 'Уверены?',
     delete: 'Удалить',

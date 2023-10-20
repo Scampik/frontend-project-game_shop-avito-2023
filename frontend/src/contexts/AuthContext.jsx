@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
-const AuthContext = createContext({});
-export const useAuth = () => useContext(AuthContext);
+export const AuthContext = createContext({});
 
 const currentUser = JSON.parse(localStorage.getItem('userData'));
 

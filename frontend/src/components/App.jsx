@@ -21,8 +21,9 @@ import LoginPage from './loginPage/Login';
 import SignUpPage from './signUpPage/signUp';
 import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
+import LanguageSelector from './navigation/LngSelector.jsx';
 import routes from '../routes.js';
-import { useAuth } from '../context/AuthContext.jsx';
+import { useAuth } from '../hooks/index.js';
 import loginImage from '../assets/logo.jpg';
 
 const AuthButton = () => {
@@ -138,6 +139,7 @@ const App = () => {
                 <Nav.Link href="#features">Top-2023</Nav.Link>
               </Nav>
               <Nav>
+                <LanguageSelector />
                 <ThemeButton />
                 <Inventory />
                 <AuthButton />

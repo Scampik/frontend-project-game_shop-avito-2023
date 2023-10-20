@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 import routes from '../../routes.js';
-import { useAuth } from '../../context/AuthContext.jsx';
+import { useAuth } from '../../hooks/index.js';
 
 import registration from '../../assets/logo.jpg';
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import routes from '../../../routes';
-import { useAuth } from '../../../context/AuthContext.jsx';
+import { useAuth } from '../../../hooks/index.js';
 
 const StartSection = () => {
   const auth = useAuth();

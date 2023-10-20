@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import store from './slices/index';
 import App from './components/App';
-import AuthProvider from './context/AuthContext';
+import AuthProvider from './contexts/AuthContext';
 import { initI18next } from './initI18next.js';
 
 const vdom = async () => {
