@@ -10,10 +10,11 @@ const StartSection = () => {
       ? <></>
       : (
         <section className="text-center d-flex align-items-center bg-body-secondary h-25">
-          <div className="container mb-n2 ">
-            <h1 className="jumbotron-heading fs-1">
+          <div className="container mb-n2 m-2">
+            <h1 className="jumbotron-heading fs-1 m-2">
               Discover the best
-              <span className="ftg-blue">free-to-play</span>
+              {' '}
+              <span className="text-warning">free-to-play</span>
               {' '}
               games!
             </h1>

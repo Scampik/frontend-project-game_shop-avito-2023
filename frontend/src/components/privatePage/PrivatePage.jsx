@@ -12,7 +12,7 @@ const PrivatePage = () => {
     // };
 
     // fetchContent();
-    setContent('Inventory here');
+    setContent('In Development');
   }, []);
 
   return content && (
@@ -21,7 +21,7 @@ const PrivatePage = () => {
         <div className="col-12 col-md-8 col-xxl-6">
           <div className="card shadow-sm">
             <div className="card-body row p-5">
-              <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
+              <div className="d-flex align-items-center justify-content-center">
                 <p>{content}</p>
               </div>
             </div>

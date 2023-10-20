@@ -1,20 +1,20 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import { Windows } from 'react-bootstrap-icons';
 import Badge from 'react-bootstrap/Badge';
 
 import {
-  // actions as channelsActions,
-  // selectors,
   resentlyGamesSelector,
 } from '../../../slices/gamesSlice.js';
 
 const ResentlyAdded = () => {
   const personGamesData = useSelector(resentlyGamesSelector);
-  console.log(personGamesData);
+  const { t } = useTranslation();
 
   return (
     <div className="col-md-8">
-      <h2 className="h3 text-muted">Recently Added</h2>
+      <h2 className="h3 text-muted">{t('mainPage.recent.title')}</h2>
       {personGamesData.map((game) => (
         <div
           key={game.id}
@@ -43,7 +43,7 @@ const ResentlyAdded = () => {
                 </h5>
               </div>
               <div className="col-1 justify-content-center text-center align-self-center">
-                <Badge className="badge bg-primary py-2 px-2 mb-2">FREE</Badge>
+                <Badge className="badge bg-primary py-2 px-2 mb-2">{t('mainPage.free')}</Badge>
               </div>
             </div>
           </div>

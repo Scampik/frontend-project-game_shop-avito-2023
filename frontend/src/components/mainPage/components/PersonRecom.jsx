@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import Badge from 'react-bootstrap/Badge';
 
 import {
-  // actions as channelsActions,
-  // selectors,
   personGamesSelector,
 } from '../../../slices/gamesSlice.js';
 
 const PersonalRecommendation = () => {
   // const dispatch = useDispatch();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const personGamesData = useSelector(personGamesSelector);
   // console.log(personGamesData);s
 
@@ -41,7 +41,7 @@ const PersonalRecommendation = () => {
                 <h4 className="fs-5 p-2 text-truncate">{game.title}</h4>
                 {}
               </a>
-              <Badge className="py-2 px-2 float-right ms-auto">FREE</Badge>
+              <Badge className="py-2 px-2 float-right ms-auto">{t('mainPage.free')}</Badge>
               <div className="d-flex justify-content-between align-items-center" />
             </div>
           </div>

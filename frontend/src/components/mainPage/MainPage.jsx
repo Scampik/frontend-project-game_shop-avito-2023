@@ -18,7 +18,6 @@ const MainPage = () => {
   const { t } = useTranslation();
   const [fetching, setFetching] = useState(true);
   const navigate = useNavigate();
-  // const auth = useAuth();
 
   useEffect(() => {
     let didMount = true; // eslint-disable-line
@@ -56,23 +55,6 @@ const MainPage = () => {
     return () => { didMount = false; };
   }, [dispatch, t, navigate]);
 
-  // const CommonError = () => (
-  //   <div className="text-center row justify-content-center align-content-center h-100">
-  //     <div className="m-2">
-  //       <Bug size={50} />
-  //     </div>
-  //     <h1 className="h4 text-muted">{t('dataLoadFail')}</h1>
-  //     <p className="text-muted">
-  //       {t('refreshMsg1')}
-  //       {' '}
-  //       <Link to="/" onClick={handleRefresh}>
-  //         {t('refreshMsg2')}
-  //       </Link>
-  //     </p>
-  //   </div>
-  // );
-  console.log(fetching, 'fetching');
-
   return fetching
     ? (
       <div className="d-flex justify-content-center h-100 align-items-center">
@@ -86,11 +68,11 @@ const MainPage = () => {
           <div className="container">
             <h2>
               <i className="fas fa-robot mr-2 h3" />
-              Personalized Recommendations
+              {t('mainPage.person.recomend')}
             </h2>
             <p className="a2">
               <i className="fas fa-question-circle mr-1" />
-              {'Log In to view your personalized recommendations! Discover games you\'ll love.'}
+              {t('mainPage.person.recomendMsg')}
             </p>
             <PersonalRecommendation />
             <div className="row mb-4">

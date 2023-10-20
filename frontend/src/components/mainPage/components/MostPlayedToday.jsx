@@ -1,22 +1,21 @@
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
 import Badge from 'react-bootstrap/Badge';
 
-// import thumbnail from '../../../assets/register.jpg';
 import {
-  // actions as channelsActions,
-  // selectors,
   mostPlayedGamesSelector,
 } from '../../../slices/gamesSlice.js';
 
 const MostPlayedToday = () => {
   // const dispatch = useDispatch();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const mostPlayedGamesData = useSelector(mostPlayedGamesSelector);
   // console.log(mostPlayedGamesData);
 
   return (
     <div className="col-md-4">
-      <h2 className="h3">Most Played Today</h2>
+      <h2 className="h3">{t('mainPage.most.title')}</h2>
       {mostPlayedGamesData.map((game) => (
         <div key={game.id} className="" data-video-class="featuredvideo" data-video-src="/g/365/videoplayback.webm">
           <div className="card mb-4 grow shadow">
@@ -42,7 +41,7 @@ const MostPlayedToday = () => {
               }}
               className="shadow py-2 px-2 float-right"
             >
-              FREE
+              {t('mainPage.free')}
             </Badge>
             <a
               href={game.freetogame_profile_url}
