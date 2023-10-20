@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,11 +9,10 @@ import {
   useLocation,
 } from 'react-router-dom';
 import {
-  Button, Navbar, Container, NavDropdown, Nav,
+  Navbar, Container, NavDropdown, Nav,
 } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import { MoonStars, SunFill } from 'react-bootstrap-icons';
 
 import PageFooter from './mainPage/components/PageFooter.jsx';
 import PrivatePage from './privatePage/PrivatePage.jsx';
@@ -22,30 +21,12 @@ import SignUpPage from './signUpPage/signUp';
 import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
 import LanguageSelector from './navigation/LngSelector.jsx';
+import ThemeSelector from './navigation/ThemeSelector.jsx';
+import AuthButtons from './navigation/AuthButtons.jsx';
+import UserMenu from './navigation/UserMenu.jsx';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import loginImage from '../assets/logo.jpg';
-
-const AuthButton = () => {
-  // const { t } = useTranslation();
-  const auth = useAuth();
-  // const location = useLocation();
-
-  return (
-    auth.user
-      ? <Button onClick={auth.logOut}>Log out</Button>
-      : <Nav.Link href={routes.loginPage()}>Log in</Nav.Link>
-  );
-};
-
-const SignUpButton = () => {
-  const auth = useAuth();
-  return (
-    auth.user
-      ? <></>
-      : <Button as={Link} to={routes.signUpPage()} className="text-decoration-none">Join Free</Button>
-  );
-};
 
 const Inventory = () => {
   const auth = useAuth();
@@ -65,36 +46,10 @@ const PrivateRoute = ({ children }) => {
   );
 };
 
-const ThemeButton = () => {
-  const [theme, setTheme] = useState('dark');
-  const handleTheme = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
-
-  useEffect(() => {
-    const body = document.querySelector('body');
-    body.removeAttribute('data-bs-theme');
-    body.setAttribute('data-bs-theme', theme);
-  }, [theme]);
-
-  return (
-    <div className="m-2 ps-3 pe-3">
-      { theme === 'light'
-        ? (
-          <SunFill
-            size={18}
-            onClick={handleTheme}
-          />
-        ) : (
-          <MoonStars
-            size={18}
-            onClick={handleTheme}
-          />
-        )}
-    </div>
-  );
-};
-
 const App = () => {
   const { t } = useTranslation();
+  const auth = useAuth();
+
   return (
     <Router>
       <div className="d-flex flex-column h-100 bg-body">
@@ -137,13 +92,12 @@ const App = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="#features">Top-2023</Nav.Link>
-              </Nav>
-              <Nav>
-                <LanguageSelector />
-                <ThemeButton />
                 <Inventory />
-                <AuthButton />
-                <SignUpButton />
+              </Nav>
+              <Nav className="flex-row flex-wrap ms-sm-auto align-items-center gap-2">
+                <LanguageSelector />
+                <ThemeSelector />
+                {auth.user ? <UserMenu /> : <AuthButtons />}
               </Nav>
             </Navbar.Collapse>
           </Container>

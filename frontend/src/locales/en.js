@@ -7,6 +7,15 @@ export default {
       regLink: 'Регистрация',
       invite: 'Нет аккаунта?',
     },
+    authButtons: {
+      logIn: 'LogIn',
+      logOut: 'LogOut',
+      signUp: 'SignUp',
+    },
+    profileSetting: {
+      inventory: 'Inventory',
+      logout: 'LogOut',
+    },
     signupPage: {
       registration: 'Зарегистрироваться',
       regTitle: 'Регистрация',
