@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import Badge from 'react-bootstrap/Badge';
+import routes from '../../../routes.js';
 
 import {
   personGamesSelector,
@@ -35,7 +36,7 @@ const PersonalRecommendation = () => {
             </div>
             <div className="card-body d-flex justify-content-between align-items-center">
               <a
-                href={game.freetogame_profile_url}
+                href={routes.gamePage(game.title)}
                 className="text-decoration-none text-muted stretched-link text-truncate"
               >
                 <h4 className="fs-5 p-2 text-truncate">{game.title}</h4>

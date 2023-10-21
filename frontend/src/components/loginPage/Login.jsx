@@ -65,7 +65,11 @@ const LoginPage = () => {
                 onSubmit={formik.handleSubmit}
                 className="col-12 col-md-6 mt-3 mt-mb-0"
               >
-                <h1 className="text-center mb-4">{t('loginPage.enter')}</h1>
+                <h3 className="text-center mb-4">
+                  {t('loginPage.title')}
+                  {' '}
+                  {t('siteName')}
+                </h3>
                 <fieldset disabled={formik.isSubmitting}>
                   <Form.Group className="form-floating mb-3">
                     <Form.Control

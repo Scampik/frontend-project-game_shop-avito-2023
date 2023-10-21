@@ -2,11 +2,6 @@
 export default {
   translation: {
     siteName: 'FTP-Games',
-    loginPage: {
-      enter: 'Войти',
-      regLink: 'Регистрация',
-      invite: 'Нет аккаунта?',
-    },
     mainPage: {
       person: {
         recomend: 'Персональные рекомендации',
@@ -17,6 +12,15 @@ export default {
       },
       most: {
         title: 'Популярные сегодня',
+      },
+      start: {
+        title1: 'Найди лучшие',
+        title2: 'бесплатные',
+        title3: 'игры!',
+        get: 'Начать',
+        free: 'бесплатно',
+        browse: 'Обзор игр',
+        loot: 'Отслеживайте, во что вы играли, и ищите, во что сыграть дальше! Плюс получите бесплатную премиальную добычу!',
       },
       free: 'FREE',
     },
@@ -29,9 +33,17 @@ export default {
       inventory: 'Инвентарь',
       logout: 'Выйти',
     },
+    loginPage: {
+      title: 'Войти на',
+      enter: 'Войти',
+      regLink: 'Регистрация',
+      invite: 'Нет аккаунта?',
+    },
     signupPage: {
       registration: 'Зарегистрироваться',
       regTitle: 'Регистрация',
+      inviteLogin: 'Уже есть аккаунт?',
+      login: 'Залогинься',
       username: {
         required: 'Обязательное поле',
         min: 'От 3 до 20 символов',

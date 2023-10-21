@@ -177,10 +177,10 @@ const SignUpPage = () => {
             <div className="card-footer p-4">
               <div className="text-center">
                 <span>
-                  {t('inviteLogin')}
+                  {t('signupPage.inviteLogin')}
                   {' '}
                 </span>
-                <Link to={routes.loginPage()}>{t('login')}</Link>
+                <Link to={routes.loginPage()}>{t('signupPage.login')}</Link>
               </div>
             </div>
           </div>

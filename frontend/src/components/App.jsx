@@ -20,6 +20,7 @@ import LoginPage from './loginPage/Login';
 import SignUpPage from './signUpPage/signUp';
 import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
+import GamePage from './gamePage/GamePage.jsx';
 import LanguageSelector from './navigation/LngSelector.jsx';
 import ThemeSelector from './navigation/ThemeSelector.jsx';
 import AuthButtons from './navigation/AuthButtons.jsx';
@@ -108,6 +109,7 @@ const App = () => {
             <Route path={routes.mainPage()} element={<MainPage />} />
             <Route path={routes.notFoundPage()} element={<PageNotFound />} />
             <Route path={routes.signUpPage()} element={<SignUpPage />} />
+            <Route path={routes.gamePage()} element={<GamePage />} />
             <Route
               path={routes.privatePage()}
               element={(

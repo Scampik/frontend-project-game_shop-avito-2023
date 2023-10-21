@@ -9,6 +9,7 @@ const routes = {
   signUpPage: () => '/signup',
   notFoundPage: () => '*',
   mainPage: () => '/',
+  gamePage: (name = ':gameName') => `/${name}`,
 };
 
 export default routes;
