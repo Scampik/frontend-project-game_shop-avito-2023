@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import routes from '../../../routes';
 import { useAuth } from '../../../hooks/index.js';
+import logo from '../../../assets/fon.jpg';
 
 const StartSection = () => {
   const auth = useAuth();
@@ -12,7 +13,13 @@ const StartSection = () => {
     auth.user
       ? <></>
       : (
-        <section className="text-center d-flex align-items-center bg-body-secondary h-25">
+        <section
+          className="text-center d-flex align-items-center bg-body-secondary h-25"
+          style={{
+            backgroundImage: `url(${logo}), linear-gradient(to bottom, #9ed182, #dcf6c0)`,
+            // backgroundRepeat: 'repeat',
+          }}
+        >
           <div className="container mb-n2 m-2">
             <h1 className="jumbotron-heading fs-1 m-2">
               {t('mainPage.start.title1')}
