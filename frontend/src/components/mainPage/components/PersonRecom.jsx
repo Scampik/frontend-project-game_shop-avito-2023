@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 import routes from '../../../routes.js';
@@ -35,13 +36,14 @@ const PersonalRecommendation = () => {
 
             </div>
             <div className="card-body d-flex justify-content-between align-items-center">
-              <a
-                href={routes.gamePage(game.title)}
+              <Link
+                to={routes.gamePage(game.title)}
+                state={game}
                 className="text-decoration-none text-muted stretched-link text-truncate"
               >
                 <h4 className="fs-5 p-2 text-truncate">{game.title}</h4>
                 {}
-              </a>
+              </Link>
               <Badge className="py-2 px-2 float-right ms-auto">{t('mainPage.free')}</Badge>
               <div className="d-flex justify-content-between align-items-center" />
             </div>
