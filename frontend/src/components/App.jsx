@@ -5,7 +5,6 @@ import {
   Route,
   Link,
   Navigate,
-  // Outlet,
   useLocation,
 } from 'react-router-dom';
 import {
@@ -21,6 +20,7 @@ import SignUpPage from './signUpPage/signUp';
 import MainPage from './mainPage/MainPage';
 import PageNotFound from './notFoundPage/PageNotFound.jsx';
 import GamePage from './gamePage/GamePage.jsx';
+import SearchBar from './navigation/SearchBar.jsx';
 import LanguageSelector from './navigation/LngSelector.jsx';
 import ThemeSelector from './navigation/ThemeSelector.jsx';
 import AuthButtons from './navigation/AuthButtons.jsx';
@@ -54,7 +54,11 @@ const App = () => {
   return (
     <Router>
       <div className="d-flex flex-column h-100 bg-body">
-        <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+        <Navbar
+          collapseOnSelect
+          expand="lg"
+          className="bg-body-tertiary"
+        >
           <Container>
             <Navbar.Brand as={Link} to={routes.mainPage()} className="fs-4 fw-semibold mr-auto">
               <img
@@ -81,21 +85,10 @@ const App = () => {
                     Free-To-Play-Games
                   </NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown title="Browser Games" id="collapsible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Browser MMORPG</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Browser Shooter
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Browser MOBA</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Browser-Games
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link href="#features">Top-2023</Nav.Link>
                 <Inventory />
               </Nav>
               <Nav className="flex-row flex-wrap ms-sm-auto align-items-center gap-2">
+                <SearchBar />
                 <LanguageSelector />
                 <ThemeSelector />
                 {auth.user ? <UserMenu /> : <AuthButtons />}
