@@ -1,5 +1,7 @@
 // import { useTranslation } from 'react-i18next';
-import { Button } from 'react-bootstrap';
+import {
+  Button, Carousel, Card,
+} from 'react-bootstrap';
 import { useLocation, Link } from 'react-router-dom';
 import routes from '../../routes';
 // import CircleChart from './components/chart.jsx';
@@ -8,25 +10,48 @@ import routes from '../../routes';
 const GamePage = () => {
 //   const { t } = useTranslation();
   const { state } = useLocation();
-  // const { game } = props.location.state;
   console.log('develop', state);
-
-  const notSignedIn = () => console.log('develop');
 
   return (
     <>
-      <div className="container py-4 bg-gradient rounded mt-2">
-        <div className="row">
-          <div className="col-md-4">
+      <div className="container py-4 mt-2">
+        <div className="row justify-content-center">
+          <div className="col-md-9">
+            <span className="small">
+              <Link className="text-decoration-none" to={routes.mainPage()}>
+                Home
+              </Link>
+              {' '}
+              &gt;
+              {' '}
+              <Link className="text-decoration-none" to={routes.mainPage()}>
+                Free Games
+              </Link>
+              {' '}
+              &gt;
+              {' '}
+              <span className="text-muted">{state.title}</span>
+            </span>
+            <h1>{state.title}</h1>
+          </div>
+          <div className="col-md-6">
             <div className="sidebar control-box">
               <div className="card shadow mb-3 rounded">
-                <img
-                  className="img2 card-img-top progressive replace"
-                  width="331"
-                  height="201"
-                  src={state.thumbnail}
-                  alt={state.title}
-                />
+                <Carousel>
+                  {[state.thumbnail, state.thumbnail, state.thumbnail].map((image, index) => (
+                    <Carousel.Item
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
+                    >
+                      <Card>
+                        <Card.Img
+                          variant="top"
+                          src={image}
+                        />
+                      </Card>
+                    </Carousel.Item>
+                  ))}
+                </Carousel>
               </div>
               <div className="d-flex justify-content-start mb-4">
                 <div className="p-3 bg-body-secondary rounded">
@@ -46,118 +71,63 @@ const GamePage = () => {
                   </Button>
                 </div>
               </div>
-              <div className="rate-section btn-group btn-block mb-3 text-center shadow-sm rounded">
-                <Button
-                  className="likeButton col-3 py-2 btn-dark2"
-                  onClick={notSignedIn}
-                >
-                  <div className="text-success">
-                    <i className="far fa-smile fa-lg text-sucess" />
-                  </div>
-                  <div className="count mb-n2 text-muted">0</div>
-                  <span className="title small">LIKE</span>
-                </Button>
-                <Button
-                  className="neutralButton col-3 py-2 btn-dark2 "
-                  onClick={notSignedIn}
-                >
-                  <div className="">
-                    <i className="far fa-meh fa-lg text-secondary" />
-                  </div>
-                  <div className="count mb-n2 text-muted">0</div>
-                  <span className="title small">MEH</span>
-                </Button>
-                <Button
-                  className="dislikeButton col-3 py-2 btn-dark2 "
-                  onClick={notSignedIn}
-                >
-                  <div className="">
-                    <i className="far fa-frown fa-lg text-danger" />
-                  </div>
-                  <div className="count mb-n2 text-muted">0</div>
-                  <span className="title small">DISLIKE</span>
-                </Button>
-                <Button
-                  href="#"
-                  className="add col-3 py-2 btn-dark2 "
-                  data-toggle="dropdown"
-                >
-                  <div className="">
-                    <i className="far fa-plus-square fa-lg text-info" />
-                  </div>
-                  <div className="count mb-n2 text-muted">0</div>
-                  <span className="chevron" data-feather="chevron-down" />
-                  <span className="title small">ADD</span>
-                </Button>
-              </div>
             </div>
           </div>
-          <div className="col-md-8">
-            <span className="small">
-              <Link className="text-decoration-none" to={routes.mainPage()}>
-                Home
-              </Link>
-              {' '}
-              &gt;
-              {' '}
-              <Link className="text-decoration-none" to={routes.mainPage()}>
-                Free Games
-              </Link>
-              {' '}
-              &gt;
-              {' '}
-              <span className="text-muted">{state.title}</span>
-            </span>
-            <h1>{state.title}</h1>
-            <div className="row py-3">
-              <div className="col-md-7">
-                <div className="statRightHolder mb-2">
-                  <ul className="statsLeft2">
-                    <li>
-                      <span className="blue">
-                        <i className="fas fa-crown mr-2" />
+          <div className="col-md-3">
+            <div className="row">
+              <img src={state.thumbnail} alt="imgGame" className="rounded" />
+              <div className="mt-2">
+                <p>
+                  {state.short_description}
+                </p>
+              </div>
+              <div className="">
+                <div id="userReviews" className="user_reviews">
+                  <div className="">
+                    <div className="text-secondary small">Недавние обзоры:</div>
+                    <div className="summary column">
+                      <span className="game_review_summary positive">Очень положительные</span>
+                      <span className="responsive_hidden">
+                        (2,222)
                       </span>
-                      <span>Very Positive</span>
-                    </li>
-                    <li>
-                      <span className="mr-2">0</span>
-                      {' '}
-                      <span>Member Ratings</span>
-                    </li>
-                    <li>
-                      <span className="yellow">
-                        <i className="far fa-user mr-2" />
-                        {' '}
-                        {state.id}
+                    </div>
+                  </div>
+                  <div className="user_reviews_summary_row">
+                    <div className="text-secondary small">Все обзоры:</div>
+                    <div className="summary column">
+                      <span className="game_review_summary positive" itemProp="description">Очень положительные</span>
+                      <span className="responsive_hidden">
+                        (122,222)
                       </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="release_date">
+                  <div className="text-secondary small">Дата выхода:</div>
+                  <div className="date">23 фев. 2023</div>
+                </div>
+                <div className="1">
+                  <div className="text-secondary small d-flex flex-row ">
+                    Разработчик:
+                    {' '}
+                    <div className="summary column" id="developers_list">
+                      <a href="*">{state.developer}</a>
                       {' '}
-                      Members have this game in their library!
-                    </li>
-                    <li>
-                      <span className="red">
-                        <i className="far fa-comment-alt mr-2" />
-                        {' '}
-                        0
-                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="dev_row">
+                  <div className="text-secondary small d-flex flex-row">
+                    Издатель:
+                    <div className="summary column">
+                      <a href="*">{state.developer}</a>
                       {' '}
-                      Reviews
-                    </li>
-                    <li>
-                      {' '}
-                      <span>
-                        <i className="fas fa-long-arrow-alt-down" />
-                        {' '}
-                        58%
-                      </span>
-                      <span className="ml-1">Popularity</span>
-                      {' '}
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>

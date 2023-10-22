@@ -20,15 +20,15 @@ const StartSection = () => {
             // backgroundRepeat: 'repeat',
           }}
         >
-          <div className="container mb-n2 m-2">
-            <h1 className="jumbotron-heading fs-1 m-2">
+          <div className="container mb-n2 m-2 text-light">
+            <h1 className="fs-1 m-2">
               {t('mainPage.start.title1')}
               {' '}
               <span className="text-warning">{t('mainPage.start.title2')}</span>
               {' '}
               {t('mainPage.start.title3')}
             </h1>
-            <p className="lead text-muted">
+            <p className="lead">
               {t('mainPage.start.loot')}
             </p>
             <p>
