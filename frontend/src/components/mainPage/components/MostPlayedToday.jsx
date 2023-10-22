@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 
+import routes from '../../../routes.js';
 import {
   mostPlayedGamesSelector,
 } from '../../../slices/gamesSlice.js';
@@ -43,12 +45,13 @@ const MostPlayedToday = () => {
             >
               {t('mainPage.free')}
             </Badge>
-            <a
-              href={game.freetogame_profile_url}
+            <Link
+              to={routes.gamePage(game.title)}
+              state={game}
               className="stretched-link no-underline"
             >
               {}
-            </a>
+            </Link>
           </div>
         </div>
       ))}

@@ -61,5 +61,6 @@ export default {
       msg3: 'на главную страницу',
     },
     language: 'Русский',
+    develop: 'в разработке',
   },
 };

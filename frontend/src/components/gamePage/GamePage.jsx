@@ -2,7 +2,9 @@
 import {
   Button, Carousel, Card,
 } from 'react-bootstrap';
+import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+
 import routes from '../../routes';
 // import CircleChart from './components/chart.jsx';
 // import logo from '../../assets/logo.jpg';
@@ -10,7 +12,14 @@ import routes from '../../routes';
 const GamePage = () => {
 //   const { t } = useTranslation();
   const { state } = useLocation();
-  console.log('develop', state);
+  // console.log('develop', state);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
+  // useEffect(() => {
+  //   current.scrollIntoView();
+  // }, []);
 
   return (
     <>
@@ -62,7 +71,7 @@ const GamePage = () => {
                     type="button"
                     name="playnow"
                     className="p-3 w-100"
-                    href="/open/asda-global"
+                    href={state.game_url}
                     rel="nofollow"
                     target="_blank"
                   >

@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import { Windows } from 'react-bootstrap-icons';
 import Badge from 'react-bootstrap/Badge';
 
+import routes from '../../../routes.js';
 import {
   resentlyGamesSelector,
 } from '../../../slices/gamesSlice.js';
@@ -31,9 +33,13 @@ const ResentlyAdded = () => {
                 </div>
               </div>
               <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
-                <a href="/synced" className="stretched-link text-decoration-none text-muted">
+                <Link
+                  to={routes.gamePage(game.title)}
+                  state={game}
+                  className="stretched-link text-decoration-none text-muted"
+                >
                   <h4 className="card-title text-truncate mt-n2 mb-1">{game.title}</h4>
-                </a>
+                </Link>
                 <div className="text-truncate text-muted mb-1">{game.short_description}</div>
                 <Badge className="m-1">{game.genre}</Badge>
               </div>

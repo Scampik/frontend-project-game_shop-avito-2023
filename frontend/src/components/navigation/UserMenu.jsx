@@ -12,9 +12,9 @@ const UserMenu = () => {
   const { t } = useTranslation();
 
   const handleInDevelopment = () => {
-    alert('в разработке');
+    console.log('в разработке');
   };
-  console.log(auth.user.username, '______');
+
   return (
     <Dropdown align="end" as="li">
       <Dropdown.Toggle
@@ -31,7 +31,7 @@ const UserMenu = () => {
         <Dropdown.Header as="li">{auth.user.username}</Dropdown.Header>
         <li>
           <Dropdown.Item as={Button} onClick={handleInDevelopment}>
-            в разработке
+            {t('develop')}
           </Dropdown.Item>
         </li>
         <Dropdown.Divider />

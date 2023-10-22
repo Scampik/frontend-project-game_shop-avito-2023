@@ -31,7 +31,7 @@ export default {
     },
     profileSetting: {
       inventory: 'Inventory',
-      logout: 'LogOut',
+      logout: 'Log out',
     },
     loginPage: {
       title: 'Log in',
@@ -61,5 +61,6 @@ export default {
       msg3: 'на главную страницу',
     },
     language: 'English',
+    develop: 'in develop',
   },
 };
