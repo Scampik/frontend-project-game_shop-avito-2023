@@ -23,6 +23,7 @@ import GamePage from './gamePage/GamePage.jsx';
 import SearchBar from './navigation/SearchBar.jsx';
 import LanguageSelector from './navigation/LngSelector.jsx';
 import ThemeSelector from './navigation/ThemeSelector.jsx';
+import FilterPage from './filterGamePage/FilterPage.jsx';
 import AuthButtons from './navigation/AuthButtons.jsx';
 import UserMenu from './navigation/UserMenu.jsx';
 import routes from '../routes.js';
@@ -75,13 +76,29 @@ const App = () => {
               <Nav className="me-auto">
                 <Nav.Link href="#features">Features</Nav.Link>
                 <NavDropdown title="Free Games" id="collapsible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">MMORPG</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
+                  <NavDropdown.Item
+                    as={Link}
+                    to={routes.filterGamePage('MMORPG')}
+                    state="MMORPG"
+                  >
+                    MMORPG
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to={routes.filterGamePage('Shooter')}
+                    state="shooter"
+                  >
                     Shooter
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">MOBA</NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to={routes.filterGamePage('MOBA')}
+                    state="moba"
+                  >
+                    MOBA
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
+                  <NavDropdown.Item as={Link} to={routes.filterGamePage('all')}>
                     Free-To-Play-Games
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -103,6 +120,7 @@ const App = () => {
             <Route path={routes.notFoundPage()} element={<PageNotFound />} />
             <Route path={routes.signUpPage()} element={<SignUpPage />} />
             <Route path={routes.gamePage()} element={<GamePage />} />
+            <Route path={routes.filterGamePage()} element={<FilterPage />} />
             <Route
               path={routes.privatePage()}
               element={(

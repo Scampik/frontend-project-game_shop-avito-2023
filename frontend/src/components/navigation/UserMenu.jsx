@@ -34,10 +34,15 @@ const UserMenu = () => {
             {t('develop')}
           </Dropdown.Item>
         </li>
-        <Dropdown.Divider />
         <li>
           <Dropdown.Item as={Link} to={routes.privatePage()}>
             {t('profileSetting.inventory')}
+          </Dropdown.Item>
+        </li>
+        <Dropdown.Divider />
+        <li>
+          <Dropdown.Item as={Link} to={routes.privatePage()}>
+            {t('profileSetting.setting')}
           </Dropdown.Item>
         </li>
         <Dropdown.Divider />

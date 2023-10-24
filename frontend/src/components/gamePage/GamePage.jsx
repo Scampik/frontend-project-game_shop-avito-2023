@@ -41,7 +41,10 @@ const GamePage = () => {
               {' '}
               <span className="text-muted">{state.title}</span>
             </span>
-            <h1>{state.title}</h1>
+            <h1>
+              {state.title}
+              {`(${state.genre})`}
+            </h1>
           </div>
           <div className="col-md-6">
             <div className="sidebar control-box">

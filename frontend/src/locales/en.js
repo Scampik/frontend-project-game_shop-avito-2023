@@ -31,6 +31,7 @@ export default {
     },
     profileSetting: {
       inventory: 'Inventory',
+      setting: 'Setting',
       logout: 'Log out',
     },
     loginPage: {

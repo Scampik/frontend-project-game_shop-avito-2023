@@ -15,7 +15,6 @@ const SearchBar = () => {
   //   inputRef.current.focus();
   // }, [showInput]);
 
-  console.log(data);
   const handleClick = () => {
     setShowInput(!showInput);
   };
@@ -27,12 +26,13 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('in develop');
+    console.log(data);
   };
 
   return (
     <div className="d-flex py-2 px-0 px-lg-2 align-items-center nav-link">
       {showInput && (
-        <Form inline className="mx-2" onSubmit={handleSubmit}>
+        <Form className="mx-2" onSubmit={handleSubmit}>
           <FormControl
             type="text"
             ref={inputRef}
@@ -43,7 +43,7 @@ const SearchBar = () => {
             onChange={handleChange}
             autoFocus
             style={{
-              height: '30px',
+              height: '28px',
             }}
           />
         </Form>

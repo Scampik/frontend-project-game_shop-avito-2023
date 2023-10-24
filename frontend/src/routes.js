@@ -9,6 +9,7 @@ const routes = {
   signUpPage: () => '/signup',
   notFoundPage: () => '*',
   mainPage: () => '/',
+  filterGamePage: (name = ':gameGenre') => `games/${name}`,
   gamePage: (name = ':gameName') => `/${name}`,
 };
 

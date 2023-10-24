@@ -39,7 +39,7 @@ const StartSection = () => {
               </Link>
               <Link
                 className="btn btn-outline-secondary btn-md ml-0"
-                to="/games"
+                to={routes.mainPage()}
                 role="button"
               >
                 {t('mainPage.start.browse')}
