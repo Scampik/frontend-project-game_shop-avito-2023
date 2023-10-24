@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import SpinnerElement from 'react-bootstrap/Spinner';
 
-// import StartSection from './components/StartSection.jsx';
-import PersonalRecommendation from './components/TopGames.jsx';
-import FilterGenryGames from './components/FilterGames.jsx';
-// import MostPlayedToday from './components/MostPlayedToday.jsx';
+import TopGames from './components/TopGames.jsx';
+import FilterGenryGames from './components/test.jsx';
 import routes from '../../routes.js';
-import { actions as gamesActions } from '../../slices/gamesSlice.js';
+import { selectors, actions as gamesActions } from '../../slices/gamesSlice.js';
 
 const FilterPage = () => {
-  // const data = useSelector(selectors.selectAll);
-  // console.log(data, 'tyt');
-  const dispatch = useDispatch();
+  const { state } = useLocation();
   const { t } = useTranslation();
+  const allGames = useSelector(selectors.selectAll);
+  const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
+  const [genre, setGenre] = useState(state);
   const [fetching, setFetching] = useState(true);
   const navigate = useNavigate();
+
+  const filteredData = allGames.filter((el) => el.genre.toUpperCase() === genre.toUpperCase());
+  const copyFilteredData = [...filteredData];
+  const topListGames = copyFilteredData.sort((a, b) => b.id - a.id).slice(0, 3);
+  // console.log(setGenre);
+  // console.log('DATA', filteredData, topListGames);
 
   useEffect(() => {
     let didMount = true; // eslint-disable-line
@@ -69,15 +75,15 @@ const FilterPage = () => {
           <div className="container">
             <h2>
               <i className="fas fa-robot mr-2 h3" />
-              {t('mainPage.person.recomend')}
+              Top Free Games for PC and Browser In 2023!
             </h2>
             <p className="a2">
               <i className="fas fa-question-circle mr-1" />
-              {t('mainPage.person.recomendMsg')}
+              168 free-to-play games found in our games list!
             </p>
-            <PersonalRecommendation />
+            <TopGames games={topListGames} />
             <div className="row mb-4" />
-            <FilterGenryGames />
+            <FilterGenryGames games={filteredData} />
           </div>
         </div>
       </div>

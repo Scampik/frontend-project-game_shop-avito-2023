@@ -5,7 +5,7 @@ shop on React/Redux, AJAX, REST, React (hooks) + Redux (@reduxjs/toolkit)
 ## How To Install?
 
 <ul>
-<li>git clone git@github.com:Scampik/***</li>
+<li>git clone git@github.com:Scampik/frontend-project-game_shop-avito-2023.git</li>
 <li>make install</li>
 <li>make start</li>
 </ul>

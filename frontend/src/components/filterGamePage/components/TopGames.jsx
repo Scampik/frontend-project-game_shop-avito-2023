@@ -1,27 +1,15 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 import routes from '../../../routes.js';
 
-import {
-  selectors,
-} from '../../../slices/gamesSlice.js';
-
-const PersonalRecommendation = () => {
-  const { state } = useLocation();
+const TopGames = ({ games }) => {
   const { t } = useTranslation();
-  const [genre, setGenre] = useState(state);
-  const allGames = useSelector(selectors.selectAll);
-  console.log(setGenre);
-  const filteredData = allGames.filter((el) => el.genre.toUpperCase() === genre.toUpperCase());
-  const topGame = filteredData.sort((a, b) => b.id - a.id).slice(0, 3);
 
   return (
     <div className="row mt-4 mb-2">
-      {topGame.map((game) => (
+      {games.map((game) => (
         <div key={game.id} className="game-card video-card col-md-4">
           <div className="card mb-4 grow shadow bg-body-secondary">
             <div className="">
@@ -56,10 +44,4 @@ const PersonalRecommendation = () => {
     </div>
   );
 };
-export default PersonalRecommendation;
-
-// <div className="loader-wrapper">
-//   <div className="spinner-grow ftg-blue" role="status">
-//     <span className="sr-only">Loading...</span>
-//   </div>
-// </div>;
+export default TopGames;
