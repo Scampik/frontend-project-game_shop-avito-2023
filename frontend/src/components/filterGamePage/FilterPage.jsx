@@ -7,7 +7,7 @@ import axios from 'axios';
 import SpinnerElement from 'react-bootstrap/Spinner';
 
 import TopGames from './components/TopGames.jsx';
-import FilterGenryGames from './components/test.jsx';
+import FilterGenryGames from './components/FilterGames.jsx';
 import routes from '../../routes.js';
 import { selectors, actions as gamesActions } from '../../slices/gamesSlice.js';
 

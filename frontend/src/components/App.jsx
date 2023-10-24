@@ -26,6 +26,7 @@ import ThemeSelector from './navigation/ThemeSelector.jsx';
 import FilterPage from './filterGamePage/FilterPage.jsx';
 import AuthButtons from './navigation/AuthButtons.jsx';
 import UserMenu from './navigation/UserMenu.jsx';
+import ScrollToTop from '../utils/scrollToTop.js';
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
 import loginImage from '../assets/logo.jpg';
@@ -114,6 +115,7 @@ const App = () => {
           </Container>
         </Navbar>
         <main className="bg-body">
+          <ScrollToTop />
           <Routes>
             <Route path={routes.loginPage()} element={<LoginPage />} />
             <Route path={routes.mainPage()} element={<MainPage />} />
