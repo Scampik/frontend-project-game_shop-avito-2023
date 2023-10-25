@@ -4,6 +4,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import PageItem from 'react-bootstrap/PageItem';
 import { Link } from 'react-router-dom';
 import Badge from 'react-bootstrap/Badge';
+
 import routes from '../../../routes.js';
 
 const itemsPerPage = 10; // количество элементов на странице
@@ -13,7 +14,7 @@ const FilterGenryGames = ({ games }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    window.scrollTo(500, 500);
+    window.scrollTo(0, 0);
   }, [currentPage]);
 
   const handlePaginationClick = (pageNumber) => {

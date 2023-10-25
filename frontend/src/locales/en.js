@@ -61,6 +61,12 @@ export default {
       msg2: 'Но вы можете перейти',
       msg3: 'на главную страницу',
     },
+    modals: {
+      inDevelopment: {
+        message: 'This feature is not available yet',
+        okButton: 'Ok',
+      },
+    },
     language: 'English',
     develop: 'in develop',
   },

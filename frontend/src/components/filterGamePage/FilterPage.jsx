@@ -1,17 +1,24 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+
 import SpinnerElement from 'react-bootstrap/Spinner';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
 
 import TopGames from './components/TopGames.jsx';
 import FilterGenryGames from './components/FilterGames.jsx';
 import routes from '../../routes.js';
 import { selectors, actions as gamesActions } from '../../slices/gamesSlice.js';
+import { actions as modalActions } from '../../slices/modalSlice.js';
 
 const FilterPage = () => {
+  // eslint-disable-next-line no-unused-vars
+  const dataTest = [1, 2, 3, 4];
   const { state } = useLocation();
   const { t } = useTranslation();
   const allGames = useSelector(selectors.selectAll);
@@ -19,7 +26,12 @@ const FilterPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [genre, setGenre] = useState(state);
   const [fetching, setFetching] = useState(true);
+  const [platform, setPlatform] = useState('All Platforms');
   const navigate = useNavigate();
+
+  const handleInDevelopment = () => {
+    dispatch(modalActions.openModal({ type: 'inDevelopment' }));
+  };
 
   const filteredData = allGames.filter((el) => el.genre.toUpperCase() === genre.toUpperCase());
   const copyFilteredData = [...filteredData];
@@ -82,7 +94,59 @@ const FilterPage = () => {
               168 free-to-play games found in our games list!
             </p>
             <TopGames games={topListGames} />
-            <div className="row mb-4" />
+            <div className="row pt-3">
+              <div className="col-auto col-sm-3">
+                <Dropdown>
+                  <span className="mr-1 text-muted">Platform:</span>
+                  {' '}
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    {platform}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setPlatform('Windows (PC)')}>Windows (PC)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('Browser (Web)')}>Browser (Web)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('All Platforms')}>All Platforms</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+              <div className="col-auto col-sm-3">
+                <Dropdown>
+                  <span className="mr-1 text-muted">Platform:</span>
+                  {' '}
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    {platform}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setPlatform('Windows (PC)')}>Windows (PC)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('Browser (Web)')}>Browser (Web)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('All Platforms')}>All Platforms</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+              <div className="col-auto col-sm-3">
+                <Dropdown>
+                  <span className="mr-1 text-muted">Platform:</span>
+                  {' '}
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    {platform}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setPlatform('Windows (PC)')}>Windows (PC)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('Browser (Web)')}>Browser (Web)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('All Platforms')}>All Platforms</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+              <div className="col-auto col-sm-3">
+                <Button onClick={handleInDevelopment}>advansed filter</Button>
+              </div>
+            </div>
+            <hr />
+            <h3>
+              All games in genre
+              {' '}
+              {genre}
+            </h3>
             <FilterGenryGames games={filteredData} />
           </div>
         </div>
