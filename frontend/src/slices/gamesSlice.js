@@ -32,7 +32,7 @@ const gamesSlice = createSlice({
     },
   },
 });
-console.log('kik');
+
 export default gamesSlice.reducer;
 export const selectors = gamesAdapter.getSelectors((state) => state.games);
 export const currenIdGame = (state) => state.games.currentGamelId;

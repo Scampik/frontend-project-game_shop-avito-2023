@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -5,12 +7,25 @@ import { useDispatch } from 'react-redux';
 import { actions as modalActions } from '../../../slices/modalSlice.js';
 import routes from '../../../routes';
 import { useAuth } from '../../../hooks/index.js';
-import logo from '../../../assets/fon.jpg';
+import logo from '../../../assets/backgroundUnSign.jpg';
 
 const StartSection = () => {
   const auth = useAuth();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const [offsetX, setOffsetX] = useState(0);
+
+  const handleMouseMove = (e) => {
+    const container = e.currentTarget;
+    const containerWidth = container.offsetWidth;
+    const mouseX = e.pageX - container.getBoundingClientRect().left;
+    const offsetX = mouseX - containerWidth / 2;
+    setOffsetX(offsetX / 50); // movement speed
+  };
+
+  const handleMouseLeave = () => {
+    // setOffsetX(0);
+  };
 
   const handleInDevelopment = () => {
     dispatch(modalActions.openModal({ type: 'inDevelopment' }));
@@ -20,14 +35,20 @@ const StartSection = () => {
     auth.user
       ? <></>
       : (
-        <section
-          className="text-center d-flex align-items-center bg-body-secondary h-25"
+        <div
+          className="container-fluid text-center d-flex align-items-center bg-body-secondary"
           style={{
-            backgroundImage: `url(${logo}), linear-gradient(to bottom, #9ed182, #dcf6c0)`,
-            // backgroundRepeat: 'repeat',
+            backgroundImage: `url(${logo})`,
+            backgroundPositionX: offsetX,
+            backgroundSize: 'cover',
+            width: '100vw',
+            height: '30vh',
+            overflowX: 'visible',
           }}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
-          <div className="container mb-n2 m-2 text-light">
+          <div className="container text-light">
             <h1 className="fs-1 m-2">
               {t('mainPage.start.title1')}
               {' '}
@@ -57,7 +78,7 @@ const StartSection = () => {
             {' '}
           </div>
           {' '}
-        </section>
+        </div>
       )
   );
 };

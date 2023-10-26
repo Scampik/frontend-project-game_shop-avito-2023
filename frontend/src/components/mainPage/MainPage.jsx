@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import SpinnerElement from 'react-bootstrap/Spinner';
 
-import StartSection from './components/StartSection.jsx';
+import StartSection from './components/UnSignSection.jsx';
 import PersonalRecommendation from './components/PersonRecom.jsx';
 import ResentlyAdded from './components/ResentlyAdded.jsx';
 import MostPlayedToday from './components/MostPlayedToday.jsx';
@@ -33,7 +33,6 @@ const MainPage = () => {
     const fetchData = async () => {
       try {
         const res = await axios.request(options);
-        console.log(res);
         if (didMount) setFetching(false);
         dispatch(gamesActions.addGames(res.data));
       } catch (err) {

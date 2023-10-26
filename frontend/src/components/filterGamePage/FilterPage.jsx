@@ -59,7 +59,6 @@ const FilterPage = () => {
     const fetchData = async () => {
       try {
         const res = await axios.request(options);
-        console.log(res);
         if (didMount) setFetching(false);
         dispatch(gamesActions.addGames(res.data));
       } catch (err) {

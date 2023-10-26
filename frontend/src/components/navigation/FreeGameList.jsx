@@ -32,10 +32,6 @@ const FreeGameList = () => {
         >
           {t('MOBA')}
         </NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item as={Link} to={routes.filterGamePage('all')}>
-          Free-To-Play-Games
-        </NavDropdown.Item>
       </NavDropdown>
     </>
   );
