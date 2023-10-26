@@ -67,6 +67,11 @@ export default {
         okButton: 'Ok',
       },
     },
+    gameGenre: {
+      MMORPG: 'MMORPG',
+      Shooter: 'Shooter',
+      MOBA: 'MOBA',
+    },
     language: 'English',
     develop: 'in develop',
   },

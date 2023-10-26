@@ -1,34 +1,25 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   Link,
-  Navigate,
-  useLocation,
 } from 'react-router-dom';
-import {
-  Navbar, Container, NavDropdown, Nav,
-} from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
 import PageFooter from './mainPage/components/PageFooter.jsx';
-import PrivatePage from './privatePage/PrivatePage.jsx';
-import LoginPage from './loginPage/Login';
-import SignUpPage from './signUpPage/signUp';
-import MainPage from './mainPage/MainPage';
-import PageNotFound from './notFoundPage/PageNotFound.jsx';
-import GamePage from './gamePage/GamePage.jsx';
 import SearchBar from './navigation/SearchBar.jsx';
 import LanguageSelector from './navigation/LngSelector.jsx';
 import ThemeSelector from './navigation/ThemeSelector.jsx';
-import FilterPage from './filterGamePage/FilterPage.jsx';
 import AuthButtons from './navigation/AuthButtons.jsx';
+import FreeGameList from './navigation/FreeGameList.jsx';
 import UserMenu from './navigation/UserMenu.jsx';
-import ScrollToTop from '../utils/scrollToTop.js';
+import AppRoutes from './AppRoutes.jsx';
+
 import routes from '../routes.js';
 import { useAuth } from '../hooks/index.js';
+import { actions as modalActions } from '../slices/modalSlice.js';
 import loginImage from '../assets/logo.jpg';
 
 const Inventory = () => {
@@ -40,18 +31,14 @@ const Inventory = () => {
   );
 };
 
-const PrivateRoute = ({ children }) => {
-  const auth = useAuth();
-  const location = useLocation();
-
-  return (
-    auth.user ? children : <Navigate to="/login" state={{ from: location }} />
-  );
-};
-
 const App = () => {
   const { t } = useTranslation();
   const auth = useAuth();
+  const dispatch = useDispatch();
+
+  const handleInDevelopment = () => {
+    dispatch(modalActions.openModal({ type: 'inDevelopment' }));
+  };
 
   return (
     <Router>
@@ -75,34 +62,8 @@ const App = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
-                <NavDropdown title="Free Games" id="collapsible-nav-dropdown">
-                  <NavDropdown.Item
-                    as={Link}
-                    to={routes.filterGamePage('MMORPG')}
-                    state="MMORPG"
-                  >
-                    MMORPG
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    to={routes.filterGamePage('Shooter')}
-                    state="shooter"
-                  >
-                    Shooter
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    as={Link}
-                    to={routes.filterGamePage('MOBA')}
-                    state="moba"
-                  >
-                    MOBA
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item as={Link} to={routes.filterGamePage('all')}>
-                    Free-To-Play-Games
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link onClick={handleInDevelopment}>Features</Nav.Link>
+                <FreeGameList />
                 <Inventory />
               </Nav>
               <Nav className="flex-row flex-wrap ms-sm-auto align-items-center gap-2">
@@ -115,23 +76,7 @@ const App = () => {
           </Container>
         </Navbar>
         <main className="bg-body">
-          <ScrollToTop />
-          <Routes>
-            <Route path={routes.loginPage()} element={<LoginPage />} />
-            <Route path={routes.mainPage()} element={<MainPage />} />
-            <Route path={routes.notFoundPage()} element={<PageNotFound />} />
-            <Route path={routes.signUpPage()} element={<SignUpPage />} />
-            <Route path={routes.gamePage()} element={<GamePage />} />
-            <Route path={routes.filterGamePage()} element={<FilterPage />} />
-            <Route
-              path={routes.privatePage()}
-              element={(
-                <PrivateRoute>
-                  <PrivatePage />
-                </PrivateRoute>
-            )}
-            />
-          </Routes>
+          <AppRoutes />
         </main>
         <PageFooter />
       </div>

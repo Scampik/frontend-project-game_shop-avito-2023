@@ -67,6 +67,11 @@ export default {
         okButton: 'Понятно',
       },
     },
+    gameGenre: {
+      MMORPG: 'MMORPG',
+      Shooter: 'Шутер',
+      MOBA: 'MOBA',
+    },
     language: 'Русский',
     develop: 'в разработке',
   },

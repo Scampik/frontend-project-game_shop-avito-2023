@@ -26,7 +26,7 @@ const FilterGenryGames = ({ games }) => {
     const endIndex = startIndex + itemsPerPage;
     return games.slice(startIndex, endIndex);
   };
-  console.log('_____', getPageData(), '_____');
+
   const renderPageItems = () => {
     const newData = getPageData();
     return (

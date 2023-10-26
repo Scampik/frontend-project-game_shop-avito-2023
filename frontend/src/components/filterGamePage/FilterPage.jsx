@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -17,27 +16,34 @@ import { selectors, actions as gamesActions } from '../../slices/gamesSlice.js';
 import { actions as modalActions } from '../../slices/modalSlice.js';
 
 const FilterPage = () => {
-  // eslint-disable-next-line no-unused-vars
-  const dataTest = [1, 2, 3, 4];
   const { state } = useLocation();
   const { t } = useTranslation();
   const allGames = useSelector(selectors.selectAll);
   const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
   const [genre, setGenre] = useState(state);
+  const [sort, setSort] = useState('Relevance');
   const [fetching, setFetching] = useState(true);
-  const [platform, setPlatform] = useState('All Platforms');
+  const [platform, setPlatform] = useState('PC (Windows)');
   const navigate = useNavigate();
 
   const handleInDevelopment = () => {
     dispatch(modalActions.openModal({ type: 'inDevelopment' }));
   };
 
-  const filteredData = allGames.filter((el) => el.genre.toUpperCase() === genre.toUpperCase());
+  useEffect(() => {
+    setGenre(state);
+  }, [state]);
+
+  const filteredData = allGames
+    .filter((el) => el.genre.toUpperCase() === genre.toUpperCase())
+    .filter((el) => (platform === 'All Platforms'
+      ? el.platform.toUpperCase() : el.platform.toUpperCase().includes(platform.toUpperCase())));
+
+  const allGenreData = allGames.map((el) => el.genre);
+  const allGenre = [...new Set(allGenreData)];
+
   const copyFilteredData = [...filteredData];
   const topListGames = copyFilteredData.sort((a, b) => b.id - a.id).slice(0, 3);
-  // console.log(setGenre);
-  // console.log('DATA', filteredData, topListGames);
 
   useEffect(() => {
     let didMount = true; // eslint-disable-line
@@ -87,14 +93,24 @@ const FilterPage = () => {
           <div className="container">
             <h2>
               <i className="fas fa-robot mr-2 h3" />
-              Top Free Games for PC and Browser In 2023!
+              Top Free
+              {' '}
+              {genre}
+              {' '}
+              Games for PC and Browser In 2023!
             </h2>
             <p className="a2">
               <i className="fas fa-question-circle mr-1" />
-              168 free-to-play games found in our games list!
+              {filteredData.length}
+              {' '}
+              free-to-play
+              {' '}
+              {genre}
+              {' '}
+              games found in our games list!
             </p>
             <TopGames games={topListGames} />
-            <div className="row pt-3">
+            <div className="row pt-3 ">
               <div className="col-auto col-sm-3">
                 <Dropdown>
                   <span className="mr-1 text-muted">Platform:</span>
@@ -103,42 +119,50 @@ const FilterPage = () => {
                     {platform}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setPlatform('Windows (PC)')}>Windows (PC)</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setPlatform('Browser (Web)')}>Browser (Web)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('PC (Windows)')}>PC (Windows)</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setPlatform('Web Browser')}>Web Browser</Dropdown.Item>
                     <Dropdown.Item onClick={() => setPlatform('All Platforms')}>All Platforms</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
               <div className="col-auto col-sm-3">
                 <Dropdown>
-                  <span className="mr-1 text-muted">Platform:</span>
+                  <span className="mr-2 text-muted">Genre:</span>
                   {' '}
                   <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                    {platform}
+                    {genre}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setPlatform('Windows (PC)')}>Windows (PC)</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setPlatform('Browser (Web)')}>Browser (Web)</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setPlatform('All Platforms')}>All Platforms</Dropdown.Item>
+                    {allGenre.map((eachGenre, index) => (
+                      <Dropdown.Item
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={index}
+                        onClick={() => setGenre(eachGenre)}
+                      >
+                        {eachGenre}
+                      </Dropdown.Item>
+                    ))}
+                    <Dropdown.Item onClick={() => setPlatform('All genre')}>All genre</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
               <div className="col-auto col-sm-3">
                 <Dropdown>
-                  <span className="mr-1 text-muted">Platform:</span>
+                  <span className="mr-1 text-muted">Sort by:</span>
                   {' '}
                   <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                    {platform}
+                    {sort}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => setPlatform('Windows (PC)')}>Windows (PC)</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setPlatform('Browser (Web)')}>Browser (Web)</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setPlatform('All Platforms')}>All Platforms</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSort('Relevance')}>Relevance</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSort('Popularity')}>Popularity</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSort('Release date')}>Release date</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setSort('Alphabetical')}>Alphabetical</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <div className="col-auto col-sm-3">
-                <Button onClick={handleInDevelopment}>advansed filter</Button>
+              <div className="col-auto d-flex flex-row-reverse col-sm-3">
+                <Button onClick={handleInDevelopment}>Advansed filter</Button>
               </div>
             </div>
             <hr />
