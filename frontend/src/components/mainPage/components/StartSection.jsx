@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
+import { actions as modalActions } from '../../../slices/modalSlice.js';
 import routes from '../../../routes';
 import { useAuth } from '../../../hooks/index.js';
 import logo from '../../../assets/fon.jpg';
@@ -8,6 +10,11 @@ import logo from '../../../assets/fon.jpg';
 const StartSection = () => {
   const auth = useAuth();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const handleInDevelopment = () => {
+    dispatch(modalActions.openModal({ type: 'inDevelopment' }));
+  };
 
   return (
     auth.user
@@ -41,6 +48,7 @@ const StartSection = () => {
                 className="btn btn-outline-secondary btn-md ml-0"
                 to={routes.mainPage()}
                 role="button"
+                onClick={() => handleInDevelopment()}
               >
                 {t('mainPage.start.browse')}
               </Link>

@@ -1,25 +1,27 @@
+/* eslint-disable no-unused-vars */
 // import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import {
   Button, Carousel, Card,
 } from 'react-bootstrap';
 import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
+import { actions as modalActions } from '../../slices/modalSlice.js';
 import routes from '../../routes';
-// import CircleChart from './components/chart.jsx';
-// import logo from '../../assets/logo.jpg';
 
 const GamePage = () => {
 //   const { t } = useTranslation();
   const { state } = useLocation();
-  // console.log('develop', state);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  const dispatch = useDispatch();
+
+  const handleInDevelopment = () => {
+    dispatch(modalActions.openModal({ type: 'purchase' }));
+  };
 
   // useEffect(() => {
-  //   current.scrollIntoView();
-  // }, []);
+  //   window.scrollTo(0, 0);
+  // });
 
   return (
     <>
@@ -74,11 +76,12 @@ const GamePage = () => {
                     type="button"
                     name="playnow"
                     className="p-3 w-100"
-                    href={state.game_url}
-                    rel="nofollow"
-                    target="_blank"
+                    onClick={() => handleInDevelopment()}
+                    // href={state.game_url}
+                    // rel="nofollow"
+                    // target="_blank"
                   >
-                    <strong>PLAY NOW</strong>
+                    <strong>In Cart</strong>
                     <i className="fas fa-sign-out-alt" />
                   </Button>
                 </div>

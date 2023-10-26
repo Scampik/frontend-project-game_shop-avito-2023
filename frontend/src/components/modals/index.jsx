@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../slices/modalSlice';
 
 import InDevelopment from './inDevelopment.jsx';
+import Purchase from './purchase.jsx';
 
 const modals = {
   inDevelopment: InDevelopment,
+  purchase: Purchase,
 };
 
 const ModalWindow = () => {
