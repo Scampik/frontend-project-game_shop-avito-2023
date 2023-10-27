@@ -27,7 +27,7 @@ const Purchase = ({ handleClose, isOpen }) => {
 
   const done = (
     <div className="d-flex flex-column gap-3 text-center">
-      <CheckCircle className="bi fs-1 align-self-center text-primary m-3" />
+      <CheckCircle className="bi fs-1 align-self-center text-success m-3" />
       <p>Done! The game has been added to your library.</p>
       <Button onClick={() => handleCloseModal()} type="button">
         Close
