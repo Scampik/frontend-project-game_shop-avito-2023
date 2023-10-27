@@ -19,10 +19,6 @@ const GamePage = () => {
     dispatch(modalActions.openModal({ type: 'purchase' }));
   };
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
-
   return (
     <>
       <div className="container py-4 mt-2">
@@ -77,9 +73,6 @@ const GamePage = () => {
                     name="playnow"
                     className="p-3 w-100"
                     onClick={() => handleInDevelopment()}
-                    // href={state.game_url}
-                    // rel="nofollow"
-                    // target="_blank"
                   >
                     <strong>In Cart</strong>
                     <i className="fas fa-sign-out-alt" />

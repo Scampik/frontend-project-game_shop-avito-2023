@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Typeahead } from 'react-bootstrap-typeahead';
 import { Link } from 'react-router-dom';
+import { Typeahead } from 'react-bootstrap-typeahead';
 
 import { Form } from 'react-bootstrap';
 import { Search } from 'react-bootstrap-icons';
@@ -33,19 +33,23 @@ const SearchBar = () => {
     } else {
       setSelectGame([]);
     }
+    setSelectGame([]);
+    setShowInput(!showInput);
   };
 
   return (
-    <div className="d-flex py-2 px-0 px-lg-2 align-items-center nav-link">
+    <div className="d-flex align-items-center nav-link p-0">
       {showInput && (
         <Typeahead
           id="template"
           labelKey="template"
-          className="mx-2"
+          className="mx-2 text-secondary align-items-start"
           style={{
-            height: '28px',
+            height: '35px',
+            width: '300px',
           }}
           maxResults={5}
+          paginationText="..."
           onChange={([e]) => handleInputLng(e)}
           options={nameGame}
           renderInput={({ referenceElementRef, ...inputProps }) => (
@@ -63,22 +67,28 @@ const SearchBar = () => {
             />
           )}
           renderMenuItemChildren={(option) => (
-            <Link
-              to={routes.gamePage(option)}
-              state={data.find((el) => el.title === option)}
-              className="text-decoration-none text-body"
-            >
-              <Image
-                alt={option}
-                // roundedCircle
-                src={data.find((el) => el.title === option).thumbnail}
-                style={{
-                  width: '15%',
-                  height: 'auto',
-                }}
-              />
-              {` ${option}`}
-            </Link>
+            <div>
+              <Link
+                to={routes.gamePage(option)}
+                state={data.find((el) => el.title === option)}
+                className="text-decoration-none text-body row"
+              >
+                <div className="col-5">
+                  <Image
+                    alt={option}
+                    src={data.find((el) => el.title === option).thumbnail}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                  />
+                </div>
+                <div className="col-3">
+                  <div>{` ${option}`}</div>
+                  <div className="text-muted small">{data.find((el) => el.title === option).genre}</div>
+                </div>
+              </Link>
+            </div>
           )}
           selected={selectGame}
         />

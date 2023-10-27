@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import SpinnerElement from 'react-bootstrap/Spinner';
+import { Robot } from 'react-bootstrap-icons';
 
 import StartSection from './components/UnSignSection.jsx';
 import PersonalRecommendation from './components/PersonRecom.jsx';
@@ -67,10 +68,12 @@ const MainPage = () => {
           <div className="container">
             <h2>
               <i className="fas fa-robot mr-2 h3" />
+              <Robot />
+              {' '}
               {t('mainPage.person.recomend')}
             </h2>
             <p className="a2">
-              <i className="fas fa-question-circle mr-1" />
+              <i className="mr-1 text-muted" />
               {t('mainPage.person.recomendMsg')}
             </p>
             <PersonalRecommendation />
