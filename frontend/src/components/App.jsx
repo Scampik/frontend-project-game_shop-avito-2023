@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
 import PageFooter from './mainPage/components/PageFooter.jsx';
-import SearchBar from './navigation/SearchBar.jsx';
+import SearchBar from './navigation/SearchBar.tsx';
 import LanguageSelector from './navigation/LngSelector.jsx';
 import ThemeSelector from './navigation/ThemeSelector.jsx';
 import AuthButtons from './navigation/AuthButtons.jsx';

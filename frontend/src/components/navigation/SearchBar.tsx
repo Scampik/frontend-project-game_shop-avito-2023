@@ -15,7 +15,7 @@ const SearchBar = () => {
   const inputRef = useRef(null);
   const [showInput, setShowInput] = useState(false);
   const [selectGame, setSelectGame] = useState([]);
-  const nameGame = data.map((el) => el.title);
+  const nameGame: string[] = data.map((el) => el.title);
 
   const handleClick = () => {
     setShowInput(!showInput);
@@ -25,9 +25,9 @@ const SearchBar = () => {
     setShowInput(!showInput);
   };
 
-  const handleInputLng = (inputValue) => {
+  const handleInputLng = (inputValue: string): void => {
     if (inputValue && inputValue.trim() !== '') {
-      const filteredOptions = nameGame.filter((el) => el
+      const filteredOptions: string[] = nameGame.filter((el: string) => el
         .toLowerCase().startsWith(inputValue.toLowerCase()));
       setSelectGame(filteredOptions.slice(0, 1));
     } else {
@@ -46,7 +46,7 @@ const SearchBar = () => {
           className="mx-2 text-secondary align-items-start"
           style={{
             height: '35px',
-            width: '300px',
+            width: '250px',
           }}
           maxResults={5}
           paginationText="..."
