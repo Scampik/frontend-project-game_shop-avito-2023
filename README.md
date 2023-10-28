@@ -1,6 +1,6 @@
 ## Shop free game! 
 
-shop on React/Redux, AJAX, REST, React (hooks) + Redux (@reduxjs/toolkit), pagination, SCSS
+shop on React/Redux, AJAX, REST, React (hooks) + Redux (@reduxjs/toolkit), pagination, SCSS, e2e test
 
 ## How To Install?
 
