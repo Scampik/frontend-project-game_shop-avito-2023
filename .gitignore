@@ -5,6 +5,12 @@ node_modules/
 dist
 index_test.html
 /test-results/
+/tests-examples/
 /playwright-report/
 /playwright/.cache/
-
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/
