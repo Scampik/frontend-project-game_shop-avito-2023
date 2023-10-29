@@ -17,7 +17,7 @@ const PageNotFound = () => {
         <p className="text-muted">
           {t('pageNotFound.msg2')}
           {' '}
-          <a href={routes.loginPage()}>
+          <a href={routes.mainPage()}>
             {t('pageNotFound.msg3')}
           </a>
         </p>
