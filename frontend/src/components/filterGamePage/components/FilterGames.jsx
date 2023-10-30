@@ -17,6 +17,10 @@ const FilterGenryGames = ({ games }) => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [games]);
+
   const handlePaginationClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
